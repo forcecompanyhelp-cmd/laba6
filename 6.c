@@ -171,7 +171,7 @@ void task987() {
 void task914() {
     int n = 0, m = 0, i, j, best = 0;
     int a[50][50];
-    double max_avg = 0, avg;
+    int sum = 0, max_sum = 0;
 
     printf("Введіть кількість рядків n і стовпців m (1..50): ");
     scanf("%d %d", &n, &m);
@@ -188,18 +188,17 @@ void task914() {
     }
 
     for (j = 0; j < m; j++) {
-        int sum = 0;
+        sum = 0;
         for (i = 0; i < n; i++) {
             sum += a[i][j];
         }
-        avg = (double)sum / n;
-        if (j == 0 || avg > max_avg) {
-            max_avg = avg;
+        if (j == 0 || sum > max_sum) {
+            max_sum = sum;
             best = j;
         }
     }
 
-    printf("Стовпець з максимальним середнім арифметичним: №%d (середнє = %.2f)\n", best + 1, max_avg);
+    printf("Стовпець з максимальним середнім арифметичним: №%d (середнє = %.2f)\n", best + 1, (double)max_sum / n);
 }
 
 void magic_odd(int m, int start, int off_r, int off_c, int a[50][50]) {
@@ -290,7 +289,7 @@ void task982() {
 
 int main() {
     int choice = 0;
-    srand((unsigned int)time(NULL));
+    srand(time(NULL));
 
     do {
         printf("\nЛабораторна робота №6 (Варіант K = 6)\n");
